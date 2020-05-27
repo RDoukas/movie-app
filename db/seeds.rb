@@ -3,14 +3,9 @@
 #
 # Examples:
 #
-actor = Actor.new({first_name: "Benedict", last_name: "Cumberbatch", known_for: "Sherlock"})
+# actor = Actor.new({first_name: "Benedict", last_name: "Cumberbatch", known_for: "Sherlock"})
 
-actor.save
+# actor.save
 
-#  actor = Actor.new(first_name: "Nathan", last_name: "Fillion", known_for: "Firefly")
 
-#  actor = Actor.new(first_name: "Nathan", last_name: "Fillion", known_for: "Firefly")
 
-#  actor = Actor.new(first_name: "Nathan", last_name: "Fillion", known_for: "Firefly")
-
-#  actor = Actor.new(first_name: "Nathan", last_name: "Fillion", known_for: "Firefly")
