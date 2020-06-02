@@ -2,7 +2,7 @@ class Api::MoviesController < ApplicationController
 
   def index
     @movies = Movie.all
-    render "actors_index.json.jb"
+    render "movies_index.json.jb"
   end 
 
   def show
@@ -12,9 +12,9 @@ class Api::MoviesController < ApplicationController
 
   def create 
     @movie = Movie.new(
-      first_name: params[:first_name],
-      last_name: params[:last_name],
-      known_for: params[:known_for],
+      title: params[:title],
+      year: params[:year],
+      plot: params[:plolt],
       created_at: params[:created_at],
       updated_at: params[:updated_at]
     )
@@ -25,14 +25,14 @@ class Api::MoviesController < ApplicationController
   def update 
     @movie = Movie.find_by(id: params[:id])
     @movie.id = params[:id] || @movie.id
-    @movie.first_name = params[:first_name] || @movie.first_name
-    @movie.last_name = params[:last_name] || @movie.last_name
-    @movie.known_for = params[:known_for] || @movie.known_for
+    @movie.title = params[:title] || @movie.title
+    @movie.year = params[:year] || @movie.year
+    @movie.plot = params[:plot] || @movie.plot
     @movie.created_at = params[:created_at] || @movie.created_at
     @movie.updated_at = params[:updated_at] || @movie.updated_at
 
     @movie.save
-    render "actors_show.json.jb"
+    render "movies_show.json.jb"
   end   
   
   def destroy 

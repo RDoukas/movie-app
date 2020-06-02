@@ -1,9 +1,9 @@
 @movies.map do |movie|
   {
     id: movie.id,
-    first_name: movie.first_name,
-    last_name: movie.last_name,
-    known_for: movie.known_for,
+    title: movie.title,
+    year: movie.year,
+    plot: movie.plot,
     created_at: movie.created_at,
     updated_at: movie.updated_at
   }
