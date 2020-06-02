@@ -1,1 +1,0 @@
-"#{@movie.first_name} #{@movie.last_name}"
