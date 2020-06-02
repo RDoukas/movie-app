@@ -6,6 +6,9 @@
 # actor = Actor.new({first_name: "Benedict", last_name: "Cumberbatch", known_for: "Sherlock"})
 
 # actor.save
+# actor = Actor.new({first_name: "Julia", last_name: "Roberts", known_for: "Pretty Woman"})
+
+# actor.save
 
 # movie = Movie.create(title: "Jerry Maguire", year:1996, plot:"One of Cameron Crowe’s best films became something of a punchline with its heavily quoted lines (“Show me the money,” “You had me at hello,” everything that cute kid says), but it’s actually a wonderful romantic comedy that has held up incredibly well in the quarter-century since its release. Tom Cruise plays the title character, a sports agent who is pushed into starting his own agency while he falls in love with a single mother, played by Renee Zellweger. It’s sweet, smart, and funny.")
 
