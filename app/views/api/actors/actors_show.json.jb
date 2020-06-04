@@ -1,8 +1,1 @@
-{
-  id: @actor.id,
-  first_name: @actor.first_name,
-  last_name: @actor.last_name,
-  known_for: @actor.known_for,
-  created_at: @actor.created_at,
-  updated_at: @actor.updated_at
-}
+render partial: "actors.json.jb", locals: { actor: @actor }
