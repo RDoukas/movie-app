@@ -22,8 +22,11 @@ class Api::ActorsController < ApplicationController
       created_at: params[:created_at],
       updated_at: params[:updated_at]
     )
-    @actor.save
-    render "actors_show.json.jb"
+    if @actor.save
+      render "actors_show.json.jb"
+    else 
+      render json: {errors: @actor.errors.full_messages}, status: :unprocessable_entity
+    end 
   end 
 
   def update 
@@ -38,8 +41,12 @@ class Api::ActorsController < ApplicationController
     @actor.created_at = params[:created_at] || @actor.created_at
     @actor.updated_at = params[:updated_at] || @actor.updated_at
 
-    @actor.save
-    render "actors_show.json.jb"
+    
+    if @actor.save
+      render "actors_show.json.jb"
+    else 
+      render json: {errors: @actor.errors.full_messages}, status: :unprocessable_entity
+    end 
   end   
   
   def destroy 

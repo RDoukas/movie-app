@@ -20,8 +20,11 @@ class Api::MoviesController < ApplicationController
       created_at: params[:created_at],
       updated_at: params[:updated_at]
     )
-    @movie.save
-    render "movies_show.json.jb"
+    if @movie.save
+      render "movies_show.json.jb"
+    else 
+      render json: {errors: @movie.errors.full_messages}, status: :unprocessable_entity
+    end 
   end 
 
   def update 
@@ -35,8 +38,11 @@ class Api::MoviesController < ApplicationController
     @movie.created_at = params[:created_at] || @movie.created_at
     @movie.updated_at = params[:updated_at] || @movie.updated_at
 
-    @movie.save
-    render "movies_show.json.jb"
+    if @movie.save
+      render "movies_show.json.jb"
+    else 
+      render json: {errors: @movie.errors.full_messages}, status: :unprocessable_entity
+    end 
   end   
   
   def destroy 
