@@ -18,6 +18,7 @@ class Api::ActorsController < ApplicationController
       last_name: params[:last_name],
       known_for: params[:known_for],
       gender: params[:gender],
+      movie_id: params[:movie_id],
       age: params[:age],
       created_at: params[:created_at],
       updated_at: params[:updated_at]
@@ -32,6 +33,7 @@ class Api::ActorsController < ApplicationController
   def update 
     @actor = Actor.find(params[:id])
     @actor.id = params[:id] || @actor.id
+    @actor.movie_id = params[:movie_id] || @actor.movie_id
     @actor.first_name = params[:first_name] || @actor.first_name
     @actor.last_name = params[:last_name] || @actor.last_name
     @actor.last_name = params[:last_name] || @actor.last_name
