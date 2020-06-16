@@ -5,6 +5,8 @@
   year: movie.year,
   plot: movie.plot,
   english: movie.english,
+  movie_id: movie.id, 
+  genres: movie.genres
   # created_at: movie.created_at,
   # updated_at: movie.updated_at
 }
