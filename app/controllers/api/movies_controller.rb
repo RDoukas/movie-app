@@ -7,7 +7,7 @@ class Api::MoviesController < ApplicationController
 
   def show
     @movie = Movie.find(params[:id])
-    render "movies_show.json.jb"
+    render "show.html.erb"
   end 
 
   def create 
@@ -39,7 +39,7 @@ class Api::MoviesController < ApplicationController
     @movie.updated_at = params[:updated_at] || @movie.updated_at
 
     if @movie.save
-      render "movies_show.json.jb"
+      render "show.html.erb"
     else 
       render json: {errors: @movie.errors.full_messages}, status: :unprocessable_entity
     end 

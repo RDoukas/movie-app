@@ -1,0 +1,21 @@
+
+
+<h1><%= @movie.title %></h1>
+<h2>Directed by: <%= @movie.director%><h2>
+<h3>Filmed in: <%= @movie.year %></h3>
+<h4>Plot: <%= @movie.plot %></h4>
+
+<h2>Movie Index</h2>
+
+<form action="/movies" method="post">
+  <div>
+    <h2>Enter the movie by title:<h2>
+  <div>
+    Title: <input type="text" name="title">
+  </div>
+  <div>
+    <button type="submit">Create Product</button>
+  </div>
+</form>
+
+
