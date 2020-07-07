@@ -1,3 +1,4 @@
 @movies.map do |movie|
   render partial: "movies.json.jb", locals: { movie: movie }
 end 
+
