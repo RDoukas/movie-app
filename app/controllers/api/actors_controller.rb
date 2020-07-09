@@ -1,8 +1,8 @@
 class Api::ActorsController < ApplicationController
-  before_action :authenticate_admin, except: [:index, :show]
+  before_action :authenticate_user, except: [:index, :show]
 
   def index
-    @actors = Actor.all.order(age: :desc)
+    @actors = Actor.all
     render "actors_index.json.jb"
   end 
 
@@ -13,15 +13,12 @@ class Api::ActorsController < ApplicationController
 
   def create 
     @actor = Actor.new(
-      id: params[:id],
+      user_id: current_user.id,
       first_name: params[:first_name],
       last_name: params[:last_name],
       known_for: params[:known_for],
       gender: params[:gender],
-      movie_id: params[:movie_id],
       age: params[:age],
-      created_at: params[:created_at],
-      updated_at: params[:updated_at]
     )
     if @actor.save
       render "actors_show.json.jb"
@@ -31,30 +28,29 @@ class Api::ActorsController < ApplicationController
   end 
 
   def update 
-    @actor = Actor.find(params[:id])
-    @actor.id = params[:id] || @actor.id
-    @actor.movie_id = params[:movie_id] || @actor.movie_id
-    @actor.first_name = params[:first_name] || @actor.first_name
-    @actor.last_name = params[:last_name] || @actor.last_name
-    @actor.last_name = params[:last_name] || @actor.last_name
-    @actor.known_for = params[:known_for] || @actor.known_for
-    @actor.age = params[:age] || @actor.age
-    @actor.gender = params[:gender] || @actor.gender
-    @actor.created_at = params[:created_at] || @actor.created_at
-    @actor.updated_at = params[:updated_at] || @actor.updated_at
+    @actor = Actor.find_by(id: params[:id])
 
-    
-    if @actor.save
-      render "actors_show.json.jb"
-    else 
-      render json: {errors: @actor.errors.full_messages}, status: :unprocessable_entity
-    end 
+    if @actor.user_id == current_user.id
+
+      @actor.first_name = params[:first_name] || @actor.first_name
+      @actor.last_name = params[:last_name] || @actor.last_name
+      @actor.last_name = params[:last_name] || @actor.last_name
+      @actor.known_for = params[:known_for] || @actor.known_for
+      @actor.age = params[:age] || @actor.age
+      @actor.gender = params[:gender] || @actor.gender
+      
+      if @actor.save
+        render "actors_show.json.jb"
+      else 
+        render json: {errors: @actor.errors.full_messages}, status: :unprocessable_entity
+      end 
+    end
   end   
   
   def destroy 
-  @actor = Actor.find(params[:id])
-  @actor.destroy
-  render json: {message: "You've successfull deleted the actor"}
+    @actor = Actor.find_by(id: params[:id])
+    @actor.destroy
+    render json: {message: "You've successfull deleted the actor"}
   end 
 
 

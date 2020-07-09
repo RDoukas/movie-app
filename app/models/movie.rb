@@ -4,7 +4,7 @@ class Movie < ApplicationRecord
   # validates :year, numericality: {only_integer: true}, length: { is: 4 }
   # validates :plot, length: { maximum: 500 }
 
-  has_many :actors
+  # has_many :actors
 
   has_many :movie_genres
   has_many :genres, through: :movie_genres

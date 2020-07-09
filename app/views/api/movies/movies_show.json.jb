@@ -1,1 +1,5 @@
-render partial: "movies.json.jb", locals: { movie: @movie }
+
+movie = render partial: "movie.json.jb", locals: {movie: @movie}
+
+# movie[:user] = render partial: "api/users/user.json.jb", locals: {user: @movie.user}
+
